@@ -292,6 +292,7 @@ document.querySelectorAll('.nav-link').forEach(anchor => {
         }
     });
 });
+});
 // ===================== FIX HAMBURGER MENU CLOSE =====================
 const hamburgerFix = document.getElementById('hamburger');
 const navMenuFix = document.getElementById('navMenu');
@@ -314,4 +315,3 @@ if (hamburgerFix && navMenuFix) {
         });
     });
 }
-});
