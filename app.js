@@ -1,29 +1,54 @@
 // ===================== ENVELOPE ANIMATION =====================
+// ===================== ENVELOPE ANIMATION =====================
 document.addEventListener('DOMContentLoaded', function() {
     const envelopeWrapper = document.getElementById('envelope-wrapper');
     const mainContent = document.getElementById('main-content');
 
-    if (envelopeWrapper) {
-        envelopeWrapper.addEventListener('click', function() {
-            // Add fade-out class to envelope
-            this.classList.add('fade-out');
-            
-            // Show main content after animation
-            setTimeout(() => {
-                this.style.display = 'none';
-                if (mainContent) {
-                    mainContent.style.display = 'block';
-                    document.body.style.overflow = 'auto';
-                    
-                    // Trigger animation for hero section
-                    const heroContent = document.querySelector('.hero-content');
-                    if (heroContent) {
-                        heroContent.style.animation = 'fadeInUp 1s ease-out';
-                    }
+    // Check if we are coming from RSVP page
+    const cameFromRsvp = document.referrer.includes('rsvp.html');
+    
+    // If coming from RSVP page, skip envelope
+    if (cameFromRsvp) {
+        if (envelopeWrapper) {
+            envelopeWrapper.style.display = 'none';
+        }
+        if (mainContent) {
+            mainContent.style.display = 'block';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Scroll to the section if there's a hash in the URL
+        const hash = window.location.hash;
+        if (hash) {
+            setTimeout(function() {
+                const element = document.querySelector(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
                 }
-            }, 800);
-        });
+            }, 100);
+        }
+    } else {
+        // Normal envelope behavior for main page
+        if (envelopeWrapper) {
+            envelopeWrapper.addEventListener('click', function() {
+                this.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    this.style.display = 'none';
+                    if (mainContent) {
+                        mainContent.style.display = 'block';
+                        document.body.style.overflow = 'auto';
+                        
+                        const heroContent = document.querySelector('.hero-content');
+                        if (heroContent) {
+                            heroContent.style.animation = 'fadeInUp 1s ease-out';
+                        }
+                    }
+                }, 800);
+            });
+        }
     }
+
 
     // ===================== NAVIGATION & HAMBURGER MENU =====================
     const hamburger = document.getElementById('hamburger');
@@ -59,19 +84,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&dates=${event.start.replace(/[-:]/g, '').replace('T', 'T')}/${event.end.replace(/[-:]/g, '').replace('T', 'T')}`;
         
         // Create iCal data for download (as fallback)
-        const icalData = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Y&O Wedding//EN
-BEGIN:VEVENT
-UID:${Date.now()}@yandowedding.com
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-DTSTART:20260405T120000Z
-DTEND:20260405T180000Z
-SUMMARY:${event.title}
-DESCRIPTION:${event.description}
-LOCATION:${event.location}
-END:VEVENT
-END:VCALENDAR`;
+                    const icalData = `BEGIN:VCALENDAR
+            VERSION:2.0
+            PRODID:-//Y&O Wedding//EN
+            BEGIN:VEVENT
+            UID:${Date.now()}@yandowedding.com
+            DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
+            DTSTART:20260405T120000Z
+            DTEND:20260405T180000Z
+            SUMMARY:${event.title}
+            DESCRIPTION:${event.description}
+            LOCATION:${event.location}
+            END:VEVENT
+            END:VCALENDAR`;
 
         // Try to open Google Calendar in a new window
         const googleWindow = window.open(googleCalendarUrl, '_blank');
@@ -250,4 +275,21 @@ END:VCALENDAR`;
             }
         });
     });
+
+    // ===================== SMOOTH SCROLL FOR NAVIGATION =====================
+document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+});
 });

@@ -189,8 +189,8 @@ body {
 }
 
 .hamburger span {
-    width: 24px;
-    height: 1px;
+    width: 25px;
+    height: 2px;
     background: var(--rich-gold);
     transition: all 0.3s ease;
 }
@@ -209,9 +209,15 @@ body {
         right: 0;
         background: var(--pure-white);
         border-bottom: 1px solid var(--light-gold);
-        padding: 1.5rem;
+        padding: 2rem;
         text-align: center;
-        gap: 1rem;
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+        display: block;
     }
 
     .nav-menu.active {
@@ -225,7 +231,8 @@ body {
 }
 
 .nav-menu {
-    gap: 2.5rem;
+    display: flex;
+    gap: 3rem;
 }
 
 .nav-link {
@@ -236,13 +243,14 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: color 0.2s ease;
+    padding: 0.5rem 0;
 }
 
 .nav-link:hover {
     color: var(--rich-gold);
 }
 
-/* ===================== HERO SECTION ===================== */
+/* HERO SECTION */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -250,10 +258,72 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 70px;
-    background: var(--pure-white);
+    overflow: hidden;
+}
+
+/* SLIDESHOW */
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: slideshow 15s infinite;
+}
+
+.slide:nth-child(1) {
+    animation-delay: 0s;
+    background-position: center;
+}
+
+.slide:nth-child(2) {
+    animation-delay: 5s;
+    background-position: center 26%;
+}
+
+.slide:nth-child(3) {
+    animation-delay: 10s;
+    background-position: center;
+}
+
+@keyframes slideshow {
+    0% {opacity: 0;}
+    5% {opacity: 1;}
+    25% {opacity: 1;}
+}
+
+@media (max-width: 768px) {
+    .slide {
+        background-size: cover;
+        background-position: center 3;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     text-align: center;
     max-width: 900px;
     padding: 3rem 2rem;
@@ -495,6 +565,83 @@ body {
 
 .event-btn:hover .btn-icon {
     opacity: 1;
+}
+
+/* ===================== GALLERY SECTION ===================== */
+.gallery-section {
+    padding: 4rem 1.5rem;
+    background: var(--pure-white);
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+}
+
+.gallery-grid img{
+    height: auto;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.gallery-grid video{
+    height: auto;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img{
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item video{
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-overlay {
+    display: none;
+}
+
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .gallery-grid {
+        gap: 15px;
+    }
+
+    .gallery-grid img,
+    .gallery-grid video {
+        max-width:200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        gap: 10px;
+    }
+
+    .gallery-grid img,
+    .gallery-grid video{
+        max-width: 150px;
+    }
 }
 
 /* ===================== CONTACT SECTION ===================== */

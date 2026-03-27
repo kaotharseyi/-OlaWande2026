@@ -36,29 +36,35 @@
                 <div class="nav-menu" id="navMenu">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#schedule" class="nav-link">Schedule</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
             </div>
         </nav>
 
-        <section class="hero">
-            <div class="hero-pattern">
-                <div class="pattern-circle"></div>
-                <div class="pattern-circle"></div>
-                <div class="pattern-circle"></div>
-            </div>
-            <div id="home" class="hero-content">
-                <div class="hero-text">
-                    <span class="hero-pre-title">The Wedding of</span>
-                    <h1 class="hero-title">Yewande <span class="ampersand">&</span> Olaoluwa</h1>
-                    <div class="divider">
-                    </div>
-                    <p class="hero-subtitle">We can't wait to share our special day with all of you.</p>
-                    <p class="hero-date">Sunday, April 5th, 2026</p>
-                </div>
-                <a href="rsvp.html" class="cta-button">RSVP Now</a>
-            </div>
-        </section>
+      <section id="home" class="hero">
+    <!-- Slideshow Background -->
+    <div class="slideshow-container" id="slideshowContainer">
+        <div class="slide" style="background-image: url('/images/Yewande\ and\ Olaouluwa\ pic2.jpeg');"></div>
+        <div class="slide" style="background-image: url('/images/Yewande\ and\ Olaouluwa\ pic4.jpeg');"></div>
+        <div class="slide" style="background-image: url('/images/Yewande\ and\ Olaouluwa\ pic5.jpeg');"></div>
+    </div>
+    
+    <!-- Overlay for readability -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <div class="hero-text">
+            <span class="hero-pre-title">The Wedding of</span>
+            <h1 class="hero-title">Yewande <span class="ampersand">&</span> Olaoluwa</h1>
+            <div class="divider"></div>
+            <p class="hero-subtitle">We can't wait to share our special day with all of you.</p>
+            <p class="hero-date">Sunday, April 5th, 2026</p>
+        </div>
+        <a href="rsvp.html" class="cta-button">RSVP Now</a>
+    </div>
+</section>
 
         <section id="schedule" class="schedule-section">
             <div class="section-wrapper">
@@ -113,6 +119,28 @@
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="section-wrapper">
+                <h2 class="section-title">Our Gallery</h2>
+                <div class="gallery-grid" id="galleryGrid">
+                    <img src="/images/Yewande and Olaouluwa pic1.jpeg" alt="Pictures">
+                    <img src="/images/Yewande and Olaouluwa pic3.jpeg" alt="Pictures">
+                    <img src="/images/Yewande and Olaoluwa pic6.jpeg" alt="Pictures">
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <video controls>
+                    <source src="/Videos/Yewande and Olaoluwa vid1.mp4" type="video/mp4">
+                    </video>
+                    <video controls>
+                    <source src="/Videos/Yewande and Olaoluwa vid2.mp4" type="video/mp4">
+                    </video>
+                    <video controls>
+                    <source src="/Videos/Yewande and Olaoluwa vid3.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </section>
