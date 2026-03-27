@@ -70,36 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===================== NAVIGATION & HAMBURGER MENU =====================
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-const navLinks = document.querySelectorAll('.nav-link');
-
-if (hamburger && navMenu) {
-    // Toggle menu when clicking hamburger
-    hamburger.addEventListener('click', function(event) {
-        event.stopPropagation();
-        navMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-    
-    // Close menu when clicking a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
-        });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
-    });
-}
-
     // ===================== ADD TO CALENDAR FUNCTION =====================
     window.addToCalendar = function() {
         const event = {
@@ -323,3 +293,32 @@ document.querySelectorAll('.nav-link').forEach(anchor => {
     });
 });
 });
+// ===================== NAVIGATION & HAMBURGER MENU =====================
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+if (hamburger && navMenu) {
+    // Toggle menu when clicking hamburger
+    hamburger.addEventListener('click', function(event) {
+        event.stopPropagation();
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    });
+}
