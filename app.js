@@ -264,3 +264,23 @@ END:VCALENDAR`;
         });
     });
 });
+// TEST HAMBURGER MENU
+console.log('Testing hamburger menu...');
+const testHamburger = document.getElementById('hamburger');
+const testMenu = document.getElementById('navMenu');
+
+console.log('Hamburger element:', testHamburger);
+console.log('Menu element:', testMenu);
+
+if (testHamburger && testMenu) {
+    console.log('Both elements found!');
+    
+    testHamburger.onclick = function() {
+        console.log('Hamburger clicked!');
+        testMenu.classList.toggle('active');
+        testHamburger.classList.toggle('active');
+        console.log('Menu active class:', testMenu.classList.contains('active'));
+    };
+} else {
+    console.log('Elements not found! Check IDs in HTML');
+}
