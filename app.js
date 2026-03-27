@@ -51,43 +51,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // ===================== NAVIGATION & HAMBURGER MENU =====================
-   // ===================== HAMBURGER MENU FIX =====================
-const hamburgerBtn = document.getElementById('hamburger');
-const menuPanel = document.getElementById('navMenu');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-if (hamburgerBtn && menuPanel) {
-    // Close menu function
-    function closeMenu() {
-        menuPanel.classList.remove('active');
-        hamburgerBtn.classList.remove('active');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
     }
-    
-    // Open/close when clicking hamburger
-    hamburgerBtn.onclick = function(e) {
-        e.stopPropagation();
-        if (menuPanel.classList.contains('active')) {
-            closeMenu();
-        } else {
-            menuPanel.classList.add('active');
-            hamburgerBtn.classList.add('active');
-        }
-    };
-    
-    // Close when clicking any nav link
-    const allLinks = document.querySelectorAll('.nav-link');
-    allLinks.forEach(function(link) {
-        link.onclick = function() {
-            closeMenu();
-        };
-    });
-    
-    // Close when clicking outside
-    document.onclick = function(e) {
-        if (!menuPanel.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-            closeMenu();
-        }
-    };
-}
 
     // ===================== ADD TO CALENDAR FUNCTION =====================
     window.addToCalendar = function() {
@@ -312,3 +293,40 @@ document.querySelectorAll('.nav-link').forEach(anchor => {
     });
 });
 });
+// ===================== HAMBURGER MENU FIX =====================
+const hamburgerBtn = document.getElementById('hamburger');
+const menuPanel = document.getElementById('navMenu');
+
+if (hamburgerBtn && menuPanel) {
+    // Close menu function
+    function closeMenu() {
+        menuPanel.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+    }
+    
+    // Open/close when clicking hamburger
+    hamburgerBtn.onclick = function(e) {
+        e.stopPropagation();
+        if (menuPanel.classList.contains('active')) {
+            closeMenu();
+        } else {
+            menuPanel.classList.add('active');
+            hamburgerBtn.classList.add('active');
+        }
+    };
+    
+    // Close when clicking any nav link
+    const allLinks = document.querySelectorAll('.nav-link');
+    allLinks.forEach(function(link) {
+        link.onclick = function() {
+            closeMenu();
+        };
+    });
+    
+    // Close when clicking outside
+    document.onclick = function(e) {
+        if (!menuPanel.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+            closeMenu();
+        }
+    };
+}
