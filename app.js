@@ -304,15 +304,21 @@ END:VCALENDAR`;
             
             modalVideo.load();
             
-            setTimeout(() => {
-                const playPromise = modalVideo.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.log('Playback failed:', error);
-                    });
+           thumbnail.addEventListener('click', function() {
+            const videoSrc = this.getAttribute('data-video-src');
+
+            modalVideo.src = videoSrc;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            modalVideo.load();
+
+            // Play directly from user click
+            modalVideo.play().catch(() => {
+                console.log("Autoplay blocked, user must press play");
+            });
+        });
                 }
-            }, 100);
-        }
         
         function closeModalFunc() {
             if (modalVideo) {
