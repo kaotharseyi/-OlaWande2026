@@ -32,7 +32,6 @@ body {
     letter-spacing: 0.3px;
 }
 
-/* ===================== ENVELOPE ANIMATION ===================== */
 #envelope-wrapper {
     position: fixed;
     inset: 0;
@@ -130,7 +129,6 @@ body {
     padding-top: 0.5rem;
 }
 
-/* ===================== NAVIGATION ===================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -290,7 +288,6 @@ body {
     color: var(--rich-gold);
 }
 
-/* HERO SECTION */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -301,7 +298,6 @@ body {
     overflow: hidden;
 }
 
-/* SLIDESHOW */
 .slideshow-container {
     position: absolute;
     top: 0;
@@ -448,7 +444,6 @@ body {
     border-color: var(--rich-gold);
 }
 
-/* ===================== SCHEDULE SECTION ===================== */
 .schedule-section {
     padding: 6rem 1.5rem;
     background: var(--warm-white);
@@ -604,10 +599,9 @@ body {
 }
 
 .event-btn:hover .btn-icon {
-    opacity: 1;
+    opacity: 1; 
 }
 
-/* ===================== GALLERY SECTION ===================== */
 .gallery-section {
     padding: 4rem 1.5rem;
     background: var(--pure-white);
@@ -660,7 +654,6 @@ body {
     display: none;
 }
 
-/* Video Gallery Styles */
 .video-thumbnail {
     position: relative;
     cursor: pointer;
@@ -706,7 +699,6 @@ body {
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* Video Modal */
 .video-modal {
     display: none;
     position: fixed;
@@ -753,7 +745,6 @@ body {
     display: block;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .video-thumbnail {
         max-width: 200px;
@@ -805,7 +796,6 @@ body {
     }
 }
 
-/* ===================== CONTACT SECTION ===================== */
 .contact-section {
     padding: 6rem 1.5rem;
     background: var(--pure-white);
@@ -877,7 +867,6 @@ body {
     border-color: var(--rich-gold);
 }
 
-/* ===================== CTA SECTION ===================== */
 .cta-section {
     padding: 6rem 1.5rem;
     background: var(--warm-white);
@@ -925,7 +914,6 @@ body {
     border-color: var(--rich-gold);
 }
 
-/* ===================== FOOTER ===================== */
 .footer {
     padding: 3rem 1.5rem;
     background: var(--pure-white);
@@ -953,7 +941,6 @@ body {
     color: var(--rich-gold);
 }
 
-/* ===================== RSVP PAGE ===================== */
 .rsvp-page {
     background: var(--pure-white);
 }

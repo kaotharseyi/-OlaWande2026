@@ -1,13 +1,9 @@
-// ===================== MAIN INITIALIZATION =====================
 document.addEventListener('DOMContentLoaded', function() {
-    // ===================== ENVELOPE ANIMATION =====================
     const envelopeWrapper = document.getElementById('envelope-wrapper');
     const mainContent = document.getElementById('main-content');
 
-    // Check if we are coming from RSVP page
     const cameFromRsvp = document.referrer.includes('rsvp.html');
     
-    // If coming from RSVP page, skip envelope
     if (cameFromRsvp) {
         if (envelopeWrapper) {
             envelopeWrapper.style.display = 'none';
@@ -17,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = 'auto';
         }
         
-        // Scroll to the section if there's a hash in the URL
         const hash = window.location.hash;
         if (hash) {
             setTimeout(function() {
@@ -28,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         }
     } else {
-        // Normal envelope behavior for main page
         if (envelopeWrapper) {
             envelopeWrapper.addEventListener('click', function() {
                 this.classList.add('fade-out');
@@ -49,31 +43,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ===================== NAVIGATION & HAMBURGER MENU (FIXED) =====================
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
 
     if (hamburger && navMenu) {
-        // Remove any existing event listeners by cloning and replacing (clean slate)
         const newHamburger = hamburger.cloneNode(true);
         hamburger.parentNode.replaceChild(newHamburger, hamburger);
         const newNavMenu = navMenu.cloneNode(true);
         navMenu.parentNode.replaceChild(newNavMenu, navMenu);
         
-        // Get fresh references
         const freshHamburger = document.getElementById('hamburger');
         const freshNavMenu = document.getElementById('navMenu');
         const freshNavLinks = document.querySelectorAll('.nav-link');
         
-        // Toggle menu when clicking hamburger
         freshHamburger.addEventListener('click', function(event) {
             event.stopPropagation();
             freshNavMenu.classList.toggle('active');
             freshHamburger.classList.toggle('active');
         });
         
-        // Close menu when clicking a link
         freshNavLinks.forEach(link => {
             link.addEventListener('click', function() {
                 freshNavMenu.classList.remove('active');
@@ -81,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             if (freshHamburger && freshNavMenu) {
                 if (!freshHamburger.contains(event.target) && !freshNavMenu.contains(event.target)) {
@@ -92,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===================== ADD TO CALENDAR FUNCTION =====================
     window.addToCalendar = function() {
         const event = {
             title: 'Yewande & Olaoluwa Wedding',
@@ -130,14 +117,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // ===================== GET DIRECTIONS FUNCTION =====================
     window.getDirections = function() {
         const destination = "O'BOLA TELECOMMUNICATIONS, Ogun sate, Nigeria";
         const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
         window.open(mapsUrl, '_blank');
     };
 
-    // ===================== RSVP FORM =====================
     const rsvpForm = document.getElementById('rsvpForm');
     
     if (rsvpForm) {
@@ -241,7 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===================== SCROLL ANIMATIONS =====================
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -263,7 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // ===================== SMOOTH SCROLL FOR NAVIGATION =====================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
